@@ -32,12 +32,12 @@ export default function NewsItem({ news }: NewsItemProps) {
 
   return (
     <article
-      className={`border-l-4 ${config.color} ${config.bg} bg-white pl-5 pr-4 py-4 rounded-r-lg transition-all shadow-sm hover:shadow-md`}
+      className={`border-l-4 ${config.color} ${config.bg} bg-white pl-4 sm:pl-5 pr-4 py-4 rounded-r-lg transition-all shadow-sm active:shadow-md sm:hover:shadow-md`}
     >
-      <div className="flex items-start gap-3">
-        <span className="text-2xl flex-shrink-0">{config.icon}</span>
+      <div className="flex items-start gap-2 sm:gap-3">
+        <span className="text-xl sm:text-2xl flex-shrink-0">{config.icon}</span>
         <div>
-          <h4 className="font-bold text-gray-900 mb-1 text-lg">{news.title}</h4>
+          <h4 className="font-bold text-gray-900 mb-1 text-base sm:text-lg">{news.title}</h4>
           <p className="text-sm text-gray-600 leading-relaxed">
             {news.description}
           </p>

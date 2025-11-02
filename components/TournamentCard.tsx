@@ -31,10 +31,10 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
   const config = scaleConfig[tournament.scale];
 
   return (
-    <article className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <div className="flex justify-between items-start mb-4">
+    <article className="bg-white border border-gray-200 rounded-xl p-5 sm:p-6 shadow-sm active:shadow-lg sm:hover:shadow-xl transition-all duration-300 sm:hover:-translate-y-1">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-4">
         <div className="flex-1">
-          <h4 className="text-2xl font-bold mb-2 text-gray-900">
+          <h4 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
             {tournament.name}
           </h4>
           <time className="text-sm text-gray-500 font-medium">
@@ -42,7 +42,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
           </time>
         </div>
         <span
-          className={`${config.color} ${config.textColor} px-4 py-2 rounded-full text-sm font-bold shadow-md whitespace-nowrap ml-4`}
+          className={`${config.color} ${config.textColor} px-4 py-2 rounded-full text-sm font-bold shadow-md whitespace-nowrap self-start`}
         >
           {tournament.scale}
         </span>
@@ -86,7 +86,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
         href={tournament.streamUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transition-all shadow-md hover:shadow-lg"
+        className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-lg font-semibold active:from-purple-800 active:to-purple-900 sm:hover:from-purple-700 sm:hover:to-purple-800 transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation"
       >
         <span>配信を見る</span>
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
