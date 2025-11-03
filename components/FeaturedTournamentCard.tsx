@@ -5,10 +5,18 @@ interface FeaturedTournamentCardProps {
 }
 
 export default function FeaturedTournamentCard({ tournament }: FeaturedTournamentCardProps) {
+  const borderColor = tournament.isLive ? "border-brand-primary" : "border-accent-primary";
+
   return (
-    <article className="bg-white border-2 border-accent-primary rounded-2xl p-6 sm:p-8 shadow-lg active:shadow-xl sm:hover:shadow-2xl transition-all duration-300">
-      <div className="mb-2">
-        <span className="inline-block px-3 py-1 bg-accent-primary text-white text-xs font-bold rounded-full mb-3">
+    <article className={`bg-white border-2 ${borderColor} rounded-2xl p-6 sm:p-8 shadow-lg active:shadow-xl sm:hover:shadow-2xl transition-all duration-300`}>
+      <div className="mb-2 flex gap-2 flex-wrap">
+        {tournament.isLive && (
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-full animate-pulse">
+            <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+            LIVE配信中
+          </span>
+        )}
+        <span className="inline-block px-3 py-1 bg-accent-primary text-white text-xs font-bold rounded-full">
           今週のイチオシ
         </span>
       </div>
@@ -75,7 +83,14 @@ export default function FeaturedTournamentCard({ tournament }: FeaturedTournamen
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-3 bg-accent-primary text-white px-8 py-4 rounded-xl font-bold text-base active:bg-accent-hover sm:hover:bg-accent-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full touch-manipulation"
       >
-        <span>配信を見る</span>
+        {tournament.isLive ? (
+          <>
+            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+            <span>配信を見る</span>
+          </>
+        ) : (
+          <span>配信予定を確認</span>
+        )}
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>

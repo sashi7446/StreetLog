@@ -5,8 +5,18 @@ interface TournamentCardProps {
 }
 
 export default function TournamentCard({ tournament }: TournamentCardProps) {
+  const borderColor = tournament.isLive ? "border-brand-primary" : "border-gray-200";
+
   return (
-    <article className="bg-white border border-gray-200 rounded-xl p-5 sm:p-6 shadow-sm active:shadow-lg sm:hover:shadow-xl transition-all duration-300 sm:hover:-translate-y-1">
+    <article className={`bg-white border ${borderColor} rounded-xl p-5 sm:p-6 shadow-sm active:shadow-lg sm:hover:shadow-xl transition-all duration-300 sm:hover:-translate-y-1`}>
+      {tournament.isLive && (
+        <div className="mb-3">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-full animate-pulse">
+            <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+            LIVE配信中
+          </span>
+        </div>
+      )}
       <div className="mb-4">
         <h4 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
           {tournament.name}
@@ -60,7 +70,14 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 bg-accent-primary text-white px-6 py-3 rounded-lg font-semibold active:bg-accent-hover sm:hover:bg-accent-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation"
       >
-        <span>配信を見る</span>
+        {tournament.isLive ? (
+          <>
+            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+            <span>配信を見る</span>
+          </>
+        ) : (
+          <span>配信予定を確認</span>
+        )}
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>

@@ -8,6 +8,7 @@ export interface Tournament {
   games: string[];
   featuredPlayers: string[];
   streamUrl: string;
+  isLive?: boolean;
 }
 
 export interface NewsItem {
