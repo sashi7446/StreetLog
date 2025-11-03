@@ -6,23 +6,15 @@ interface NewsItemProps {
 
 const categoryConfig = {
   release: {
-    color: "border-blue-500",
-    bg: "hover:bg-blue-50",
     icon: "🚀",
   },
   transfer: {
-    color: "border-green-500",
-    bg: "hover:bg-green-50",
     icon: "🔄",
   },
   event: {
-    color: "border-purple-500",
-    bg: "hover:bg-purple-50",
     icon: "📅",
   },
   other: {
-    color: "border-gray-500",
-    bg: "hover:bg-gray-50",
     icon: "📰",
   },
 };
@@ -32,7 +24,7 @@ export default function NewsItem({ news }: NewsItemProps) {
 
   return (
     <article
-      className={`border-l-4 ${config.color} ${config.bg} bg-white pl-4 sm:pl-5 pr-4 py-4 rounded-r-lg transition-all shadow-sm active:shadow-md sm:hover:shadow-md`}
+      className="border-l-4 border-gray-300 bg-white pl-4 sm:pl-5 pr-4 py-4 rounded-r-lg transition-all shadow-sm active:shadow-md sm:hover:shadow-md hover:border-gray-400"
     >
       <div className="flex items-start gap-2 sm:gap-3">
         <span className="text-xl sm:text-2xl flex-shrink-0">{config.icon}</span>

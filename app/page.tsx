@@ -22,7 +22,7 @@ export default function Home() {
 
         {/* 今週の大会セクション */}
         <section className="mb-16">
-          <h3 className="text-3xl font-bold mb-6 text-gray-900 pb-3 border-b-4 border-purple-600">
+          <h3 className="text-3xl font-bold mb-6 text-gray-900 pb-3 border-b-4 border-accent-primary">
             今週の大会
           </h3>
           <div className="space-y-6">
@@ -34,7 +34,7 @@ export default function Home() {
 
         {/* 先週のニュースセクション */}
         <section className="mb-16">
-          <h3 className="text-3xl font-bold mb-6 text-gray-900 pb-3 border-b-4 border-blue-600">
+          <h3 className="text-3xl font-bold mb-6 text-gray-900 pb-3 border-b-4 border-accent-primary">
             先週のニュース
           </h3>
           <div className="space-y-4">
@@ -46,7 +46,7 @@ export default function Home() {
 
         {/* 最近の界隈セクション */}
         <section className="mb-16">
-          <h3 className="text-3xl font-bold mb-6 text-gray-900 pb-3 border-b-4 border-green-600">
+          <h3 className="text-3xl font-bold mb-6 text-gray-900 pb-3 border-b-4 border-accent-primary">
             最近の界隈
           </h3>
           <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8 border border-gray-200 shadow-sm">
