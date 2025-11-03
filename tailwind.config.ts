@@ -10,26 +10,32 @@ const config: Config = {
     extend: {
       colors: {
         // Base colors
-        'bg-primary': '#FAFAFA',
+        'bg-primary': '#F9F9F9',
         'bg-secondary': '#FFFFFF',
-        'bg-dark': '#1F2937',
+        'bg-dark': '#31313B',
 
         // Text colors
-        'text-primary': '#111827',
+        'text-primary': '#31313B',
         'text-secondary': '#6B7280',
         'text-muted': '#9CA3AF',
 
-        // Brand colors
+        // Brand colors (modern, calm, cool)
         'brand': {
-          primary: '#3B82F6',
-          hover: '#2563EB',
+          primary: '#9BA7AB',
+          hover: '#8A969A',
+        },
+
+        // Accent color (deep blue for CTAs)
+        'accent': {
+          primary: '#374B7C',
+          hover: '#2D3D63',
         },
 
         // Tournament scale colors
         'tournament': {
           world: '#EF4444',
           national: '#F97316',
-          regional: '#3B82F6',
+          regional: '#374B7C',
           online: '#10B981',
         },
       },

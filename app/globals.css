@@ -5,23 +5,27 @@
 @layer base {
   :root {
     /* Base colors */
-    --bg-primary: #FAFAFA;
+    --bg-primary: #F9F9F9;
     --bg-secondary: #FFFFFF;
-    --bg-dark: #1F2937;
+    --bg-dark: #31313B;
 
     /* Text colors */
-    --text-primary: #111827;
+    --text-primary: #31313B;
     --text-secondary: #6B7280;
     --text-muted: #9CA3AF;
 
-    /* Brand colors */
-    --brand-primary: #3B82F6;
-    --brand-hover: #2563EB;
+    /* Brand colors (modern, calm, cool) */
+    --brand-primary: #9BA7AB;
+    --brand-hover: #8A969A;
+
+    /* Accent color (deep blue for CTAs) */
+    --accent-primary: #374B7C;
+    --accent-hover: #2D3D63;
 
     /* Tournament colors */
     --tournament-world: #EF4444;
     --tournament-national: #F97316;
-    --tournament-regional: #3B82F6;
+    --tournament-regional: #374B7C;
     --tournament-online: #10B981;
   }
 

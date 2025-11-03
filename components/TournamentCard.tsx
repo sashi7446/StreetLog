@@ -86,7 +86,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
         href={tournament.streamUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 bg-brand-primary text-white px-6 py-3 rounded-lg font-semibold active:bg-brand-hover sm:hover:bg-brand-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation"
+        className="inline-flex items-center justify-center gap-2 bg-accent-primary text-white px-6 py-3 rounded-lg font-semibold active:bg-accent-hover sm:hover:bg-accent-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation"
       >
         <span>配信を見る</span>
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
