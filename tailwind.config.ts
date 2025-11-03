@@ -14,8 +14,8 @@ const config: Config = {
         'bg-secondary': '#FFFFFF',
         'bg-dark': '#31313B',
 
-        // Text colors
-        'text-primary': '#31313B',
+        // Text colors (WCAG AA compliant)
+        'text-primary': '#111827',
         'text-secondary': '#6B7280',
         'text-muted': '#9CA3AF',
 
