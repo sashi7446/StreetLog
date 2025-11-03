@@ -36,7 +36,7 @@ const config: Config = {
           world: '#EF4444',
           national: '#F97316',
           regional: '#374B7C',
-          online: '#10B981',
+          online: '#7B7E82',
         },
       },
     },
