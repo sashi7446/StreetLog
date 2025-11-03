@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import FeaturedTournamentCard from "@/components/FeaturedTournamentCard";
 import TournamentCard from "@/components/TournamentCard";
 import NewsItem from "@/components/NewsItem";
 import { getLatestWeek } from "@/lib/content";
@@ -26,8 +27,12 @@ export default function Home() {
             今週の大会
           </h3>
           <div className="space-y-6">
-            {tournaments.map((tournament) => (
-              <TournamentCard key={tournament.id} tournament={tournament} />
+            {tournaments.map((tournament, index) => (
+              index === 0 ? (
+                <FeaturedTournamentCard key={tournament.id} tournament={tournament} />
+              ) : (
+                <TournamentCard key={tournament.id} tournament={tournament} />
+              )
             ))}
           </div>
         </section>
