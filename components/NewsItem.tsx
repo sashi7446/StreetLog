@@ -24,7 +24,7 @@ export default function NewsItem({ news }: NewsItemProps) {
 
   return (
     <article
-      className="border-l-4 border-gray-300 bg-white pl-4 sm:pl-5 pr-4 py-4 rounded-r-lg transition-all shadow-sm active:shadow-md sm:hover:shadow-md hover:border-gray-400"
+      className="border-l-4 border-neutral-border bg-white pl-4 sm:pl-5 pr-4 py-4 rounded-r-lg transition-all shadow-sm active:shadow-md sm:hover:shadow-md hover:border-gray-600"
     >
       <div className="flex items-start gap-2 sm:gap-3">
         <span className="text-xl sm:text-2xl flex-shrink-0">{config.icon}</span>

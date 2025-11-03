@@ -22,6 +22,9 @@
     --accent-primary: #374B7C;
     --accent-hover: #2D3D63;
 
+    /* Neutral colors */
+    --neutral-border: #7B7E82;
+
     /* Tournament colors */
     --tournament-world: #EF4444;
     --tournament-national: #F97316;

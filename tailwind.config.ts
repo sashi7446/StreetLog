@@ -31,6 +31,11 @@ const config: Config = {
           hover: '#2D3D63',
         },
 
+        // Neutral colors
+        'neutral': {
+          border: '#7B7E82',
+        },
+
         // Tournament scale colors
         'tournament': {
           world: '#EF4444',
