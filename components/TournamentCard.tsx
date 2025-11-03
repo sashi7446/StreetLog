@@ -4,48 +4,16 @@ interface TournamentCardProps {
   tournament: Tournament;
 }
 
-const scaleConfig = {
-  "世界大会": {
-    color: "bg-tournament-world",
-    textColor: "text-white",
-    border: "border-red-200",
-  },
-  "全国大会": {
-    color: "bg-tournament-national",
-    textColor: "text-white",
-    border: "border-orange-200",
-  },
-  "地域大会": {
-    color: "bg-tournament-regional",
-    textColor: "text-white",
-    border: "border-blue-200",
-  },
-  "オンライン大会": {
-    color: "bg-tournament-online",
-    textColor: "text-white",
-    border: "border-green-200",
-  },
-};
-
 export default function TournamentCard({ tournament }: TournamentCardProps) {
-  const config = scaleConfig[tournament.scale];
-
   return (
     <article className="bg-white border border-gray-200 rounded-xl p-5 sm:p-6 shadow-sm active:shadow-lg sm:hover:shadow-xl transition-all duration-300 sm:hover:-translate-y-1">
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-4">
-        <div className="flex-1">
-          <h4 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
-            {tournament.name}
-          </h4>
-          <time className="text-sm text-gray-500 font-medium">
-            {tournament.date}
-          </time>
-        </div>
-        <span
-          className={`${config.color} ${config.textColor} px-4 py-2 rounded-full text-sm font-bold shadow-md whitespace-nowrap self-start`}
-        >
-          {tournament.scale}
-        </span>
+      <div className="mb-4">
+        <h4 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
+          {tournament.name}
+        </h4>
+        <time className="text-sm text-gray-500 font-medium">
+          {tournament.date}
+        </time>
       </div>
 
       <p className="text-gray-600 mb-4 leading-relaxed">
@@ -53,6 +21,10 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
       </p>
 
       <div className="flex gap-6 text-sm text-gray-600 mb-4 flex-wrap">
+        <div className="flex items-center gap-2">
+          <span className="text-lg">📍</span>
+          <span className="font-medium">開催地: {tournament.location}</span>
+        </div>
         <div className="flex items-center gap-2">
           <span className="text-lg">📊</span>
           <span className="font-medium">参加者: {tournament.participants}</span>
