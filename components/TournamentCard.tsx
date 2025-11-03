@@ -6,22 +6,22 @@ interface TournamentCardProps {
 
 const scaleConfig = {
   "世界大会": {
-    color: "bg-gradient-to-r from-red-600 to-red-700",
+    color: "bg-tournament-world",
     textColor: "text-white",
     border: "border-red-200",
   },
   "全国大会": {
-    color: "bg-gradient-to-r from-orange-600 to-orange-700",
+    color: "bg-tournament-national",
     textColor: "text-white",
     border: "border-orange-200",
   },
   "地域大会": {
-    color: "bg-gradient-to-r from-blue-600 to-blue-700",
+    color: "bg-tournament-regional",
     textColor: "text-white",
     border: "border-blue-200",
   },
   "オンライン大会": {
-    color: "bg-gradient-to-r from-green-600 to-green-700",
+    color: "bg-tournament-online",
     textColor: "text-white",
     border: "border-green-200",
   },
@@ -73,7 +73,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
             {tournament.featuredPlayers.map((player) => (
               <span
                 key={player}
-                className="bg-gradient-to-r from-gray-100 to-gray-200 px-3 py-1.5 rounded-full text-sm font-medium text-gray-800 hover:from-gray-200 hover:to-gray-300 transition"
+                className="bg-gray-100 px-3 py-1.5 rounded-full text-sm font-medium text-gray-800 hover:bg-gray-200 transition"
               >
                 {player}
               </span>
@@ -86,7 +86,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
         href={tournament.streamUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-lg font-semibold active:from-purple-800 active:to-purple-900 sm:hover:from-purple-700 sm:hover:to-purple-800 transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation"
+        className="inline-flex items-center justify-center gap-2 bg-brand-primary text-white px-6 py-3 rounded-lg font-semibold active:bg-brand-hover sm:hover:bg-brand-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation"
       >
         <span>配信を見る</span>
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
