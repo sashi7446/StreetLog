@@ -59,7 +59,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
             {tournament.featuredPlayers.map((player) => (
               <span
                 key={player}
-                className="bg-gray-100 px-3 py-1.5 rounded-full text-sm font-medium text-gray-800 hover:bg-gray-200 transition"
+                className="bg-gray-100 px-2 py-1 rounded-full text-xs font-medium text-gray-800 hover:bg-gray-200 transition"
               >
                 {player}
               </span>
