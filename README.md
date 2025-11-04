@@ -12,7 +12,8 @@ Street Fighterシーンの週刊情報をお届けするメディアサイト
 - **週刊発行形式**: 毎週更新される「今週の注目」
 - **新聞スタイルUI**: シンプルで読みやすいレイアウト
 - **スマホ最適化**: モバイルファーストなレスポンシブデザイン
-- **即視聴可能**: 配信中の大会を一目で確認、ワンクリックで視聴
+- **複数配信対応**: メイン/サブ/日本語配信など複数チャンネルから選択可能
+- **過去大会管理**: 過去の大会は自動で折りたたみ、結果記事へのリンク表示
 
 ---
 
@@ -48,8 +49,24 @@ tournaments:
       - ウメハラ
       - ときど
       - Punk
-    streamUrl: https://www.twitch.tv/capcomfighters
-    isLive: true  # 配信中ならtrue、配信前/終了後はfalse
+    resultUrl: https://example.com/results  # 大会結果記事URL（オプション・過去大会用）
+    streams:
+      - category: main  # main | sub | japanese
+        label: メイン配信
+        channels:
+          - id: capcom-fighters-main
+            platform: twitch  # twitch | youtube
+            channelName: CapcomFighters
+            url: https://www.twitch.tv/capcomfighters
+            isLive: true  # 配信中ならtrue
+      - category: japanese
+        label: 日本語配信
+        channels:
+          - id: capcom-jp
+            platform: youtube
+            channelName: CAPCOM公式チャンネル
+            url: https://www.youtube.com/@capcom
+            isLive: true
 
 news:
   - id: sf6-season3
@@ -97,17 +114,19 @@ StreetLog/
 │   └── globals.css          # グローバルスタイル
 ├── components/              # UIコンポーネント
 │   ├── Navigation.tsx       # ヘッダーナビゲーション
-│   ├── FeaturedTournamentCard.tsx  # ヒーローカード
-│   ├── TournamentCard.tsx   # 通常の大会カード
+│   ├── FeaturedTournamentCard.tsx  # ヒーローカード（アコーディオン対応）
+│   ├── TournamentCard.tsx   # 通常の大会カード（アコーディオン対応）
 │   ├── NewsItem.tsx         # ニュースアイテム
 │   ├── LiveBadge.tsx        # 配信中バッジ
-│   └── StreamButton.tsx     # 配信ボタン
+│   ├── StreamButton.tsx     # 配信ボタン
+│   └── StreamModal.tsx      # 配信チャンネル選択モーダル
 ├── content/                 # Markdownコンテンツ
 │   └── weeks/               # 週刊データ
 │       ├── 2025-w44.md
 │       └── 2025-w45.md
 ├── lib/                     # ユーティリティ
-│   └── content.ts           # Markdownパーサー
+│   ├── content.ts           # Markdownパーサー
+│   └── dateUtils.ts         # 日時パース・過去判定
 ├── types/                   # TypeScript型定義
 │   └── tournament.ts        # データ型定義
 └── docs/                    # ドキュメント
@@ -148,14 +167,29 @@ npm run build
 
 ### 配信状態の表示
 
-- **配信中 (isLive: true)**
+- **配信中 (チャンネルのisLive: true)**
   - 🔴 LIVEバッジ（アニメーション）
   - ブランドカラーの枠線
-  - ボタン: 「🔴 配信を見る」
+  - ボタン: 「ライブ配信を見る」
 
-- **非配信時 (isLive: false)**
+- **配信予定 (未来の大会、isLive: false)**
   - 通常の枠線
   - ボタン: 「配信予定を確認」
+
+- **過去の大会 (開始時刻+12時間経過)**
+  - 半透明表示（opacity-50）
+  - アコーディオンで折りたたみ（三角マークで展開）
+  - ボタン: 「配信先リンクを見る」
+  - 結果ボタン表示（resultUrlがある場合）
+
+### 複数配信チャンネル
+
+大会カードの配信ボタンをクリックすると、モーダルオーバーレイで配信チャンネルを選択可能：
+- **メイン配信**: 主要チャンネル
+- **サブ配信**: サブステージ（EVO2, EVO3等）
+- **日本語配信**: 日本語実況チャンネル
+
+各チャンネルにはプラットフォームアイコン（YouTube/Twitch）とライブ状態が表示されます。
 
 ### 視覚的階層
 
