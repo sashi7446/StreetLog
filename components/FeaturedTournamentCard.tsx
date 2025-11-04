@@ -1,6 +1,7 @@
 import { Tournament } from "@/types/tournament";
 import LiveBadge from "./LiveBadge";
 import StreamButton from "./StreamButton";
+import { parseDateTime, isPastTournament } from "@/lib/dateUtils";
 
 interface FeaturedTournamentCardProps {
   tournament: Tournament;
@@ -8,9 +9,11 @@ interface FeaturedTournamentCardProps {
 
 export default function FeaturedTournamentCard({ tournament }: FeaturedTournamentCardProps) {
   const borderColor = tournament.isLive ? "border-brand-primary" : "border-accent-primary";
+  const isPast = isPastTournament(tournament.date);
+  const { displayText } = parseDateTime(tournament.date);
 
   return (
-    <article className={`bg-white border-2 ${borderColor} rounded-2xl p-6 sm:p-8 shadow-lg active:shadow-xl sm:hover:shadow-2xl transition-all duration-300`}>
+    <article className={`bg-white border-2 ${borderColor} rounded-2xl p-6 sm:p-8 shadow-lg active:shadow-xl sm:hover:shadow-2xl transition-all duration-300 ${isPast ? 'opacity-50' : ''}`}>
       <div className="mb-2 flex gap-2 flex-wrap">
         {tournament.isLive && <LiveBadge />}
         <span className="inline-block px-3 py-1 bg-accent-primary text-white text-xs font-bold rounded-full">
@@ -22,8 +25,8 @@ export default function FeaturedTournamentCard({ tournament }: FeaturedTournamen
         <h4 className="text-2xl sm:text-4xl font-extrabold mb-3 text-gray-900 leading-tight">
           {tournament.name}
         </h4>
-        <time className="text-base text-gray-500 font-semibold">
-          {tournament.date}
+        <time className="text-base sm:text-lg text-gray-700 font-bold">
+          {displayText}
         </time>
       </div>
 
@@ -60,12 +63,14 @@ export default function FeaturedTournamentCard({ tournament }: FeaturedTournamen
 
       {tournament.featuredPlayers.length > 0 && (
         <div className="mb-6">
-          <p className="text-sm font-semibold text-gray-700 mb-3">注目選手</p>
+          <p className="text-sm font-semibold text-gray-700 mb-3">
+            注目選手 ({tournament.featuredPlayers.length}名)
+          </p>
           <div className="flex gap-2 flex-wrap">
             {tournament.featuredPlayers.map((player) => (
               <span
                 key={player}
-                className="bg-gray-100 px-4 py-2 rounded-full text-sm font-bold text-gray-800 hover:bg-gray-200 transition"
+                className="bg-gray-100 px-3 py-1.5 rounded-full text-sm font-medium text-gray-800 hover:bg-gray-200 transition"
               >
                 {player}
               </span>

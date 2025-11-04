@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { Tournament, NewsItem, CommunityTopic } from "@/types/tournament";
+import { parseDateTime } from "./dateUtils";
 
 export interface WeekData {
   week: number;
@@ -20,12 +21,20 @@ export function getWeekData(weekFile: string): WeekData {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data } = matter(fileContents);
 
+  // 大会を時系列順にソート
+  const tournaments = (data.tournaments || []).sort((a: Tournament, b: Tournament) => {
+    const aDate = parseDateTime(a.date).start;
+    const bDate = parseDateTime(b.date).start;
+    if (!aDate || !bDate) return 0;
+    return aDate.getTime() - bDate.getTime();
+  });
+
   return {
     week: data.week,
     year: data.year,
     startDate: data.startDate,
     endDate: data.endDate,
-    tournaments: data.tournaments || [],
+    tournaments,
     news: data.news || [],
     communityTopics: data.communityTopics || [],
   };

@@ -1,6 +1,7 @@
 import { Tournament } from "@/types/tournament";
 import LiveBadge from "./LiveBadge";
 import StreamButton from "./StreamButton";
+import { parseDateTime, isPastTournament } from "@/lib/dateUtils";
 
 interface TournamentCardProps {
   tournament: Tournament;
@@ -8,9 +9,11 @@ interface TournamentCardProps {
 
 export default function TournamentCard({ tournament }: TournamentCardProps) {
   const borderColor = tournament.isLive ? "border-brand-primary" : "border-gray-200";
+  const isPast = isPastTournament(tournament.date);
+  const { displayText } = parseDateTime(tournament.date);
 
   return (
-    <article className={`bg-white border ${borderColor} rounded-xl p-5 sm:p-6 shadow-sm active:shadow-lg sm:hover:shadow-xl transition-all duration-300 sm:hover:-translate-y-1`}>
+    <article className={`bg-white border ${borderColor} rounded-xl p-5 sm:p-6 shadow-sm active:shadow-lg sm:hover:shadow-xl transition-all duration-300 sm:hover:-translate-y-1 ${isPast ? 'opacity-50' : ''}`}>
       {tournament.isLive && (
         <div className="mb-3">
           <LiveBadge />
@@ -20,8 +23,8 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
         <h4 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
           {tournament.name}
         </h4>
-        <time className="text-sm text-gray-500 font-medium">
-          {tournament.date}
+        <time className="text-sm sm:text-base text-gray-700 font-bold">
+          {displayText}
         </time>
       </div>
 
@@ -49,7 +52,9 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
 
       {tournament.featuredPlayers.length > 0 && (
         <div className="mb-5">
-          <p className="text-sm font-semibold text-gray-700 mb-2">注目選手</p>
+          <p className="text-sm font-semibold text-gray-700 mb-2">
+            注目選手 ({tournament.featuredPlayers.length}名)
+          </p>
           <div className="flex gap-2 flex-wrap">
             {tournament.featuredPlayers.map((player) => (
               <span
