@@ -16,7 +16,7 @@ export default function StreamButton({ streamUrl, isLive = false, variant = 'sma
       href={streamUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center ${sizeClasses} bg-accent-primary text-white font-semibold active:bg-accent-hover sm:hover:bg-accent-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation`}
+      className={`inline-flex items-center justify-center ${sizeClasses} bg-brand-primary text-white font-semibold active:bg-brand-hover sm:hover:bg-brand-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation`}
     >
       {isLive ? (
         <>
