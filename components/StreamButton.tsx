@@ -17,8 +17,6 @@ export default function StreamButton({ streams, tournamentName, variant = 'small
     ? 'px-8 py-4 rounded-xl text-base gap-3'
     : 'px-6 py-3 rounded-lg text-sm gap-2';
 
-  const iconSize = variant === 'large' ? 'w-5 h-5' : 'w-4 h-4';
-
   const hasAnyLiveStream = streams.some(group =>
     group.channels.some(channel => channel.isLive)
   );
@@ -37,9 +35,6 @@ export default function StreamButton({ streams, tournamentName, variant = 'small
         ) : (
           <span>配信予定を確認</span>
         )}
-        <svg className={iconSize} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
       </button>
 
       <StreamModal
