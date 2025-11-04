@@ -22,12 +22,12 @@ export default function FeaturedTournamentCard({ tournament }: FeaturedTournamen
       </div>
 
       <div className="mb-5">
-        <h4 className="text-2xl sm:text-4xl font-extrabold mb-3 text-gray-900 leading-tight">
-          {tournament.name}
-        </h4>
-        <time className="text-base sm:text-lg text-gray-700 font-bold">
+        <time className="text-base sm:text-lg text-gray-700 font-bold block mb-2">
           {displayText}
         </time>
+        <h4 className="text-2xl sm:text-4xl font-extrabold text-gray-900 leading-tight">
+          {tournament.name}
+        </h4>
       </div>
 
       <p className="text-gray-700 text-base sm:text-lg mb-6 leading-relaxed">

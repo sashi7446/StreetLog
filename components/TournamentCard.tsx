@@ -20,12 +20,12 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
         </div>
       )}
       <div className="mb-4">
-        <h4 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
-          {tournament.name}
-        </h4>
-        <time className="text-sm sm:text-base text-gray-700 font-bold">
+        <time className="text-sm sm:text-base text-gray-700 font-bold block mb-2">
           {displayText}
         </time>
+        <h4 className="text-xl sm:text-2xl font-bold text-gray-900">
+          {tournament.name}
+        </h4>
       </div>
 
       <p className="text-gray-600 mb-4 leading-relaxed">
