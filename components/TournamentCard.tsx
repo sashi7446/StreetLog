@@ -8,13 +8,16 @@ interface TournamentCardProps {
 }
 
 export default function TournamentCard({ tournament }: TournamentCardProps) {
-  const borderColor = tournament.isLive ? "border-brand-primary" : "border-gray-200";
+  const hasAnyLiveStream = tournament.streams.some(group =>
+    group.channels.some(channel => channel.isLive)
+  );
+  const borderColor = hasAnyLiveStream ? "border-brand-primary" : "border-gray-200";
   const isPast = isPastTournament(tournament.date);
   const { displayText } = parseDateTime(tournament.date);
 
   return (
     <article className={`bg-white border ${borderColor} rounded-xl p-5 sm:p-6 shadow-sm active:shadow-lg sm:hover:shadow-xl transition-all duration-300 sm:hover:-translate-y-1 ${isPast ? 'opacity-50' : ''}`}>
-      {tournament.isLive && (
+      {hasAnyLiveStream && (
         <div className="mb-3">
           <LiveBadge />
         </div>
@@ -69,8 +72,8 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
       )}
 
       <StreamButton
-        streamUrl={tournament.streamUrl}
-        isLive={tournament.isLive}
+        streams={tournament.streams}
+        tournamentName={tournament.name}
         variant="small"
       />
     </article>

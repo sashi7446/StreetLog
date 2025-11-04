@@ -8,14 +8,17 @@ interface FeaturedTournamentCardProps {
 }
 
 export default function FeaturedTournamentCard({ tournament }: FeaturedTournamentCardProps) {
-  const borderColor = tournament.isLive ? "border-brand-primary" : "border-accent-primary";
+  const hasAnyLiveStream = tournament.streams.some(group =>
+    group.channels.some(channel => channel.isLive)
+  );
+  const borderColor = hasAnyLiveStream ? "border-brand-primary" : "border-accent-primary";
   const isPast = isPastTournament(tournament.date);
   const { displayText } = parseDateTime(tournament.date);
 
   return (
     <article className={`bg-white border-2 ${borderColor} rounded-2xl p-6 sm:p-8 shadow-lg active:shadow-xl sm:hover:shadow-2xl transition-all duration-300 ${isPast ? 'opacity-50' : ''}`}>
       <div className="mb-2 flex gap-2 flex-wrap">
-        {tournament.isLive && <LiveBadge />}
+        {hasAnyLiveStream && <LiveBadge />}
         <span className="inline-block px-3 py-1 bg-accent-primary text-white text-xs font-bold rounded-full">
           今週のイチオシ
         </span>
@@ -80,8 +83,8 @@ export default function FeaturedTournamentCard({ tournament }: FeaturedTournamen
       )}
 
       <StreamButton
-        streamUrl={tournament.streamUrl}
-        isLive={tournament.isLive}
+        streams={tournament.streams}
+        tournamentName={tournament.name}
         variant="large"
       />
     </article>
