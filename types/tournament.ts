@@ -22,6 +22,7 @@ export interface Tournament {
   games: string[];
   featuredPlayers: string[];
   streams: StreamGroup[];
+  resultUrl?: string; // 大会結果レポート記事へのURL
 }
 
 export interface NewsItem {

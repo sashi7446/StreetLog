@@ -8,9 +8,10 @@ interface StreamButtonProps {
   streams: StreamGroup[];
   tournamentName: string;
   variant?: 'large' | 'small';
+  isPastTournament?: boolean;
 }
 
-export default function StreamButton({ streams, tournamentName, variant = 'small' }: StreamButtonProps) {
+export default function StreamButton({ streams, tournamentName, variant = 'small', isPastTournament = false }: StreamButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const sizeClasses = variant === 'large'
@@ -21,20 +22,24 @@ export default function StreamButton({ streams, tournamentName, variant = 'small
     group.channels.some(channel => channel.isLive)
   );
 
+  // ボタンテキストの決定
+  let buttonText = '配信予定を確認';
+  if (isPastTournament) {
+    buttonText = '配信先リンクを見る';
+  } else if (hasAnyLiveStream) {
+    buttonText = 'ライブ配信を見る';
+  }
+
   return (
     <>
       <button
         onClick={() => setIsModalOpen(true)}
         className={`inline-flex items-center justify-center ${sizeClasses} bg-brand-primary text-white font-semibold active:bg-brand-hover sm:hover:bg-brand-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation`}
       >
-        {hasAnyLiveStream ? (
-          <>
-            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-            <span>ライブ配信を見る</span>
-          </>
-        ) : (
-          <span>配信予定を確認</span>
+        {hasAnyLiveStream && !isPastTournament && (
+          <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
         )}
+        <span>{buttonText}</span>
       </button>
 
       <StreamModal
