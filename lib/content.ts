@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { Tournament, NewsItem } from "@/types/tournament";
+import { Tournament, NewsItem, CommunityTopic } from "@/types/tournament";
 
 export interface WeekData {
   week: number;
@@ -10,6 +10,7 @@ export interface WeekData {
   endDate: string;
   tournaments: Tournament[];
   news: NewsItem[];
+  communityTopics: CommunityTopic[];
 }
 
 const contentDirectory = path.join(process.cwd(), "content/weeks");
@@ -26,6 +27,7 @@ export function getWeekData(weekFile: string): WeekData {
     endDate: data.endDate,
     tournaments: data.tournaments || [],
     news: data.news || [],
+    communityTopics: data.communityTopics || [],
   };
 }
 

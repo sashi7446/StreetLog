@@ -17,3 +17,9 @@ export interface NewsItem {
   description: string;
   category: "release" | "transfer" | "event" | "other";
 }
+
+export interface CommunityTopic {
+  id: string;
+  text: string;
+  sourceUrl?: string;
+}
