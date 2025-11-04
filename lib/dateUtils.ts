@@ -55,7 +55,8 @@ export function isPastTournament(dateString: string): boolean {
   const { start } = parseDateTime(dateString);
   if (!start) return false;
 
-  const now = new Date();
+  // テスト用: 現在時刻を2025年11月14日(金) 22:00に固定
+  const now = new Date('2025-11-14T22:00:00+09:00');
   // 開始時刻 + 12時間を経過していたら「過去」と判定
   const endEstimate = new Date(start.getTime() + 12 * 60 * 60 * 1000);
   return now > endEstimate;
