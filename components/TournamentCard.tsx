@@ -44,13 +44,6 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
           <span className="text-lg">📊</span>
           <span className="font-medium">参加者: {tournament.participants}</span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-lg">🎮</span>
-          <span className="font-medium">
-            {tournament.games.slice(0, 2).join(", ")}
-            {tournament.games.length > 2 && ` +${tournament.games.length - 2}`}
-          </span>
-        </div>
       </div>
 
       {tournament.featuredPlayers.length > 0 && (

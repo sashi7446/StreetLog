@@ -37,7 +37,7 @@ export default function FeaturedTournamentCard({ tournament }: FeaturedTournamen
         {tournament.description}
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
           <span className="text-2xl">📍</span>
           <div>
@@ -50,16 +50,6 @@ export default function FeaturedTournamentCard({ tournament }: FeaturedTournamen
           <div>
             <p className="text-xs text-gray-500 font-medium">参加者</p>
             <p className="text-sm font-bold text-gray-900">{tournament.participants}</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
-          <span className="text-2xl">🎮</span>
-          <div>
-            <p className="text-xs text-gray-500 font-medium">タイトル</p>
-            <p className="text-sm font-bold text-gray-900">
-              {tournament.games[0]}
-              {tournament.games.length > 1 && ` +${tournament.games.length - 1}`}
-            </p>
           </div>
         </div>
       </div>
