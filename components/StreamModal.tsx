@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { StreamGroup } from "@/types/tournament";
 
 interface StreamModalProps {
@@ -10,6 +11,74 @@ interface StreamModalProps {
 }
 
 export default function StreamModal({ isOpen, onClose, streamGroups, tournamentName }: StreamModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Body scroll lock: 背景のスクロールを防ぐ
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    // Focus restoration: 現在のフォーカス要素を保存
+    previousFocusRef.current = document.activeElement as HTMLElement;
+
+    // ESCキーで閉じる
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    // Focus trap: Tabキーでモーダル内を循環
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || !modalRef.current) return;
+
+      const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift+Tab: 最初の要素から前に行こうとしたら最後へ
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement?.focus();
+        }
+      } else {
+        // Tab: 最後の要素から次に行こうとしたら最初へ
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    document.addEventListener('keydown', handleTab);
+
+    // 最初のfocusable要素にフォーカス
+    const firstFocusable = modalRef.current?.querySelector<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    firstFocusable?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('keydown', handleTab);
+
+      // Body scroll lock解除
+      document.body.style.overflow = originalOverflow;
+
+      // Focus restoration: モーダルを閉じた時に元の要素に戻す
+      if (previousFocusRef.current) {
+        previousFocusRef.current.focus();
+      }
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const hasAnyLiveStream = streamGroups.some(group =>
@@ -20,8 +89,12 @@ export default function StreamModal({ isOpen, onClose, streamGroups, tournamentN
     <div
       className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
     >
       <div
+        ref={modalRef}
         className="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
@@ -29,7 +102,7 @@ export default function StreamModal({ isOpen, onClose, streamGroups, tournamentN
         <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 rounded-t-2xl">
           <div className="flex items-start justify-between">
             <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">
+              <h3 id="modal-title" className="text-xl font-bold text-gray-900 mb-1">
                 {hasAnyLiveStream ? 'ライブ配信を見る' : '配信予定を確認'}
               </h3>
               <p className="text-sm text-gray-600">{tournamentName}</p>
