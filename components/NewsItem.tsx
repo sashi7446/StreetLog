@@ -7,15 +7,27 @@ interface NewsItemProps {
 const categoryConfig = {
   release: {
     icon: "🚀",
+    label: "リリース",
+    bgColor: "bg-purple-100",
+    textColor: "text-purple-800",
   },
   transfer: {
     icon: "🔄",
+    label: "移籍",
+    bgColor: "bg-yellow-100",
+    textColor: "text-yellow-800",
   },
   event: {
     icon: "📅",
+    label: "イベント",
+    bgColor: "bg-blue-100",
+    textColor: "text-blue-800",
   },
   other: {
     icon: "📰",
+    label: "その他",
+    bgColor: "bg-gray-100",
+    textColor: "text-gray-700",
   },
 };
 
@@ -28,7 +40,12 @@ export default function NewsItem({ news }: NewsItemProps) {
     >
       <div className="flex items-start gap-2 sm:gap-3">
         <span className="text-xl sm:text-2xl flex-shrink-0">{config.icon}</span>
-        <div>
+        <div className="flex-grow">
+          <div className="flex items-center gap-2 mb-2">
+            <span className={`inline-block px-2 py-0.5 rounded text-xs font-semibold ${config.bgColor} ${config.textColor}`}>
+              {config.label}
+            </span>
+          </div>
           <h4 className="font-bold text-gray-900 mb-1 text-base sm:text-lg">{news.title}</h4>
           <p className="text-sm text-gray-600 leading-relaxed">
             {news.description}
