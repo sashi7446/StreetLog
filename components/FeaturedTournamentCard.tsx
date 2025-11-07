@@ -39,6 +39,8 @@ export default function FeaturedTournamentCard({ tournament }: FeaturedTournamen
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="w-full text-left mb-5 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
+          aria-expanded={isExpanded}
+          aria-label={isExpanded ? '大会情報を閉じる' : '大会情報を開く'}
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex-grow">
@@ -114,7 +116,7 @@ export default function FeaturedTournamentCard({ tournament }: FeaturedTournamen
                   </span>
                 ))}
                 <button
-                  className="bg-brand-primary text-white px-2 py-1 rounded-full text-xs font-bold hover:bg-brand-hover transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
+                  className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs font-medium hover:bg-gray-300 hover:text-gray-900 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
                   aria-label="全選手を見る"
                 >
                   and more!!
