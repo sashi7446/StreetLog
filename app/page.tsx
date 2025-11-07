@@ -8,7 +8,7 @@ export default function Home() {
   const weekData = getLatestWeek();
   const { tournaments, news: newsItems, communityTopics, week, year } = weekData;
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-brand-primary">
       <Navigation />
 
       <main className="container mx-auto px-4 py-10 max-w-5xl">
@@ -59,7 +59,7 @@ export default function Home() {
               {communityTopics.map((topic) => (
                 <div
                   key={topic.id}
-                  className="bg-white rounded-lg p-4 sm:p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-white rounded-lg p-4 sm:p-5 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-start gap-3">
                     <span className="text-2xl flex-shrink-0">📢</span>
@@ -86,7 +86,7 @@ export default function Home() {
               ))}
             </div>
           ) : (
-            <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8 border border-gray-200 shadow-sm">
+            <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8 shadow-sm">
               <div className="flex items-start gap-4">
                 <span className="text-3xl">📢</span>
                 <p className="text-gray-700 text-lg leading-relaxed">

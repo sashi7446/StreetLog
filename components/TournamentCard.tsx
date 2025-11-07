@@ -16,7 +16,6 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
   const hasAnyLiveStream = tournament.streams.some(group =>
     group.channels.some(channel => channel.isLive)
   );
-  const borderColor = hasAnyLiveStream ? "border-brand-primary" : "border-gray-200";
   const isPast = isPastTournament(tournament.date);
   const { displayText } = parseDateTime(tournament.date);
 
@@ -25,7 +24,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
   const isOpen = !shouldCollapse || isExpanded;
 
   return (
-    <article className={`bg-white border ${borderColor} rounded-xl p-5 sm:p-6 shadow-sm active:shadow-lg sm:hover:shadow-xl transition-all duration-300 sm:hover:-translate-y-1 ${isPast ? 'opacity-50' : ''}`}>
+    <article className={`bg-white rounded-xl p-5 sm:p-6 shadow-sm active:shadow-lg sm:hover:shadow-xl transition-all duration-300 sm:hover:-translate-y-1 ${isPast ? 'opacity-50' : ''}`}>
       {/* ライブバッジ */}
       {hasAnyLiveStream && (
         <div className="mb-3">
