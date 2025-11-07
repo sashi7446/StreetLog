@@ -37,7 +37,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
       {shouldCollapse && (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full text-left mb-4"
+          className="w-full text-left mb-4 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex-grow">
@@ -107,7 +107,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
                   </span>
                 ))}
                 <button
-                  className="bg-brand-primary text-white px-2 py-1 rounded-full text-xs font-bold hover:bg-brand-hover transition"
+                  className="bg-brand-primary text-white px-2 py-1 rounded-full text-xs font-bold hover:bg-brand-hover transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
                   aria-label="全選手を見る"
                 >
                   and more!!
@@ -131,7 +131,7 @@ export default function TournamentCard({ tournament }: TournamentCardProps) {
                 href={tournament.resultUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm gap-2 bg-accent-primary text-white font-semibold active:bg-accent-hover sm:hover:bg-accent-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm gap-2 bg-accent-primary text-white font-semibold active:bg-accent-hover sm:hover:bg-accent-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
               >
                 <span>結果を見る</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

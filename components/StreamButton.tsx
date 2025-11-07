@@ -34,7 +34,7 @@ export default function StreamButton({ streams, tournamentName, variant = 'small
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className={`inline-flex items-center justify-center ${sizeClasses} bg-brand-primary text-white font-semibold active:bg-brand-hover sm:hover:bg-brand-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation`}
+        className={`inline-flex items-center justify-center ${sizeClasses} bg-brand-primary text-white font-semibold active:bg-brand-hover sm:hover:bg-brand-hover transition-all shadow-md active:shadow-lg sm:hover:shadow-lg w-full sm:w-auto touch-manipulation focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary`}
       >
         {hasAnyLiveStream && !isPastTournament && (
           <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>

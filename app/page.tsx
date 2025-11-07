@@ -72,7 +72,7 @@ export default function Home() {
                           href={topic.sourceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 mt-2 text-sm text-accent-primary hover:text-accent-hover font-medium"
+                          className="inline-flex items-center gap-1 mt-2 text-sm text-accent-primary hover:text-accent-hover font-medium rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
                         >
                           <span>ソースを見る</span>
                           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

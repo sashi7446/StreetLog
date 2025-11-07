@@ -36,7 +36,7 @@ export default function StreamModal({ isOpen, onClose, streamGroups, tournamentN
             </div>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition"
+              className="text-gray-400 hover:text-gray-600 transition rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
               aria-label="閉じる"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ export default function StreamModal({ isOpen, onClose, streamGroups, tournamentN
                     href={channel.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-brand-primary hover:bg-gray-50 transition group"
+                    className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-brand-primary hover:bg-gray-50 transition group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
                   >
                     {/* Platform Icon */}
                     <div className="flex-shrink-0">
